@@ -10,7 +10,7 @@ const checkSchemeId = async (req, res, next) => {
       .select()
       .where('scheme_id', req.params.scheme_id);
     
-    if (scheme) {
+    if (scheme[0]) {
       next();
     } else {
       next({ status: 404, message: `scheme with scheme_id ${req.params.scheme_id} not found` });
